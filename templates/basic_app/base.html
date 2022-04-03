@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+	<nav class='navbar navbar-default navbar-static-top'>
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li><a class="navbar-brand" href="{% url 'index' %}">DJANGO</a></li>
+				<li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+				<li><a class="navbar-link" href="{% url 'basic_app:register' %}">Register</a></li>	
+
+
+				{% if user.is_authenticated %}
+				<li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
+				{% else %}
+				<li><a class="navbar-link" href="{% url 'basic_app:user_login' %}">Login</a></li>
+				
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
+
+	{% block body_block %}
+
+
+	{% endblock %}
+</body>
+</html>
